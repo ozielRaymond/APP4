@@ -9,4 +9,8 @@ public abstract class Circuit extends Composant {
         this.composants = composants;
     }
 
+    private void ajouterComposant(Composant composant) {
+        composants.add(composant);
+    }
+
 }
