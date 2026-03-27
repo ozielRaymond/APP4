@@ -9,6 +9,11 @@ public class CircuitParallele extends Circuit {
 
     @Override
     public double calculerResistance() {
-        return 0;
+        double resistance = 0;
+        for (Composant composant : composants) {
+            resistance += 1 / composant.calculerResistance();
+        }
+
+        return resistance;
     }
 }
