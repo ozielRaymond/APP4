@@ -12,11 +12,11 @@ import java.util.List;
 
 public class CircuitBuilder {
 
-    public Composant construireCircuit(String chemin) throws Exception {
+    public static Composant construireCircuit(String chemin) throws Exception {
         return lireComposant(new ObjectMapper().readTree(new File(chemin)));
     }
 
-    private Composant lireComposant(JsonNode node) {
+    private static Composant lireComposant(JsonNode node) {
 
         String type = node.get("type").asText();
 
