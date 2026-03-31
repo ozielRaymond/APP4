@@ -37,8 +37,7 @@ public class CircuitBuilder {
         if ("serie".equals(type)) {
             CircuitSerie circuitSerie = new CircuitSerie();
 
-            for (int i = 0; i < listeComposants.size(); i++) {
-                Composant composant = listeComposants.get(i);
+            for (Composant composant : listeComposants) {
                 circuitSerie.ajouterComposant(composant);
             }
 
@@ -47,8 +46,7 @@ public class CircuitBuilder {
         } else if ("parallele".equals(type)) {
             CircuitParallele circuitParallele = new CircuitParallele();
 
-            for (int i = 0; i < listeComposants.size(); i++) {
-                Composant composant = listeComposants.get(i);
+            for (Composant composant : listeComposants) {
                 circuitParallele.ajouterComposant(composant);
             }
 
