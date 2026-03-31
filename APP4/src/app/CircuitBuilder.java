@@ -13,11 +13,7 @@ import java.util.List;
 public class CircuitBuilder {
 
     public Composant construireCircuit(String chemin) throws Exception {
-        ObjectMapper mapper = new ObjectMapper();
-
-        JsonNode root = mapper.readTree(new File(chemin));
-
-        return lireComposant(root);
+        return lireComposant(new ObjectMapper().readTree(new File(chemin)));
     }
 
     private Composant lireComposant(JsonNode node) {
