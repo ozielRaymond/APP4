@@ -1,21 +1,20 @@
 package app;
 
 import electronique.Composant;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CircuitApp {
 
-    static void main() {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         final String path = "src/donnees/fichiers_json";
 
         while (true) {
 
-            File[] fichiers = new File(path).listFiles();
-
+            File dossiers = new File(path);
+            File[] fichiers = dossiers.listFiles();
             ArrayList<String> fichiersJson = new ArrayList<>();
 
             if (fichiers != null) {
@@ -26,36 +25,44 @@ public class CircuitApp {
                 }
             }
 
+            if (fichiersJson.isEmpty()) {
+                System.out.println("Aucun fichier détecté dans le dossier");
+                break;
+            }
 
+
+            System.out.println("\nFichiers disponibles:");
             for (int i = 0; i < fichiersJson.size(); i++) {
                 System.out.println("[" + (i + 1) + "] " + fichiersJson.get(i));
             }
 
-            int choix;
+            int choix = -1;
 
-            while (true) {
+            while (choix < 1 || choix > fichiersJson.size()) {
                 try {
                     System.out.print("Taper le numéro du fichier à analyser: ");
                     choix = Integer.parseInt(sc.nextLine());
 
-                    if (choix >= 1 && choix <= fichiersJson.size()) {
-                        break;
+                    if (choix < 1 || choix > fichiersJson.size()) {
+                        System.out.println("Choix invalide.");
                     }
 
                 } catch (Exception e) {
-                    System.out.println("choix invalide");
+                    System.out.println("Choix invalide");
                 }
 
-                try {
+            }
 
-                    Composant circuit = CircuitBuilder.construireCircuit(path);
+            String nomChoix = fichiersJson.get(choix - 1);
+            String pathFichier = path + "/" + nomChoix;
 
-                    double resistanceTotal = circuit.calculerResistance();
+            try {
+                Composant circuit = CircuitBuilder.construireCircuit(pathFichier);
+                double resistance = circuit.calculerResistance();
 
-                    System.out.printf("Résistance équivalente : %.2f Ω\n", resistanceTotal);
-                } catch (Exception e) {
-                    System.out.println("Erreur lors du calcul.");
-                }
+                System.out.printf("Résistance équivalente pour '%s' : %.2f Ω\n", nomChoix, resistance);
+            } catch (Exception e) {
+                System.out.println("Erreur lors du calcul");
             }
 
 
