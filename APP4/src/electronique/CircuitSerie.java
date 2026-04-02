@@ -1,6 +1,6 @@
 package electronique;
 
-public class CircuitSerie extends Circuit{
+public class CircuitSerie extends Circuit {
 
     @Override
     public double calculerResistance() {

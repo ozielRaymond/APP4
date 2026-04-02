@@ -1,6 +1,7 @@
 package app;
 
 import electronique.Composant;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -84,9 +85,7 @@ public class CircuitApp {
                 if (action.equals("Q")) {
                     System.out.println("Vous avez quitté le programme");
                     break;
-                }
-
-                else {
+                } else {
                     System.out.print("! Saisie invalide\n");
                 }
             }
