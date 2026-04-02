@@ -31,7 +31,7 @@ public class CircuitApp {
             }
 
 
-            System.out.println("\nFichiers disponibles:");
+            System.out.println("Fichiers disponibles:\n");
             for (int i = 0; i < fichiersJson.size(); i++) {
                 System.out.println("[" + (i + 1) + "] " + fichiersJson.get(i));
             }
@@ -40,11 +40,11 @@ public class CircuitApp {
 
             while (choix < 1 || choix > fichiersJson.size()) {
                 try {
-                    System.out.print("Taper le numéro du fichier à analyser: ");
+                    System.out.print("\nTaper le numéro du fichier à analyser > ");
                     choix = Integer.parseInt(sc.nextLine());
 
                     if (choix < 1 || choix > fichiersJson.size()) {
-                        System.out.println("Choix invalide.");
+                        System.out.println("Choix invalide");
                     }
 
                 } catch (Exception e) {
@@ -60,19 +60,39 @@ public class CircuitApp {
                 Composant circuit = CircuitBuilder.construireCircuit(pathFichier);
                 double resistance = circuit.calculerResistance();
 
-                System.out.printf("Résistance équivalente pour '%s' : %.2f Ω\n", nomChoix, resistance);
+                System.out.printf("\nRésistance équivalente du circuit : %.2f Ω\n", resistance);
             } catch (Exception e) {
                 System.out.println("Erreur lors du calcul");
             }
 
+            String action;
 
-            System.out.println("\n[R] Recommencer");
-            System.out.println("[Q] Quitter");
+            while (true) {
+                System.out.println("\n[R] Recommencer");
+                System.out.println("[Q] Quitter");
+                System.out.print("\nEntrez la lettre correspondant à l'action désiré > ");
 
-            String action = sc.nextLine().toUpperCase();
+
+                action = sc.nextLine().toUpperCase();
+
+                System.out.println();
+
+                if (action.equals("R")) {
+                    break;
+                }
+
+                if (action.equals("Q")) {
+                    System.out.println("Vous avez quitté le programme");
+                    break;
+                }
+
+                else {
+                    System.out.print("! Saisie invalide\n");
+                }
+            }
+
 
             if (action.equals("Q")) {
-                System.out.println("Vous avez quitté le programme.");
                 break;
             }
         }
