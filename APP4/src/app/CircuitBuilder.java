@@ -51,7 +51,7 @@ public class CircuitBuilder {
         }
 
 
-        throw new IllegalArgumentException("Typer de circuit inconnu : " + type);
+        throw new IllegalArgumentException("Type de circuit inconnu : " + type);
 
 
     }

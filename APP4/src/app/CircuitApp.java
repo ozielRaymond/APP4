@@ -71,7 +71,7 @@ public class CircuitApp {
             while (true) {
                 System.out.println("\n[R] Recommencer");
                 System.out.println("[Q] Quitter");
-                System.out.print("\nEntrez la lettre correspondant à l'action désiré > ");
+                System.out.print("\nEntrez la lettre correspondant à l'action désirée > ");
 
 
                 action = sc.nextLine().toUpperCase();
