@@ -24,7 +24,9 @@ public class CircuitApp {
                         fichiersJson.add(fichier.getName());
                     }
                 }
-            } else {
+            }
+
+            if (fichiersJson.isEmpty()) {
                 System.out.println("Aucun fichier détecté dans le dossier");
                 break;
             }
