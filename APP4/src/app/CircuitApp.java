@@ -18,14 +18,13 @@ public class CircuitApp {
             File[] fichiers = dossiers.listFiles();
             ArrayList<String> fichiersJson = new ArrayList<>();
 
-            for (File fichier : fichiers) {
-                if (fichier.getName().endsWith(".json")) {
-                    fichiersJson.add(fichier.getName());
+            if (fichiers != null) {
+                for (File fichier : fichiers) {
+                    if (fichier.getName().endsWith(".json")) {
+                        fichiersJson.add(fichier.getName());
+                    }
                 }
-            }
-
-
-            if (fichiersJson.isEmpty()) {
+            } else {
                 System.out.println("Aucun fichier détecté dans le dossier");
                 break;
             }
