@@ -18,17 +18,15 @@ public class CircuitApp {
             File[] fichiers = dossiers.listFiles();
             ArrayList<String> fichiersJson = new ArrayList<>();
 
-            if (fichiers != null) {
-                for (File fichier : fichiers) {
-                    if (fichier.getName().endsWith(".json")) {
-                        fichiersJson.add(fichier.getName());
-                    }
-                }
-            }
-
             if (fichiersJson.isEmpty()) {
                 System.out.println("Aucun fichier détecté dans le dossier");
                 break;
+            }
+
+            for (File fichier : fichiers) {
+                if (fichier.getName().endsWith(".json")) {
+                    fichiersJson.add(fichier.getName());
+                }
             }
 
 
@@ -80,11 +78,10 @@ public class CircuitApp {
 
                 if (action.equals("R")) {
                     break;
-                }
-
-                if (action.equals("Q")) {
+                } else if (action.equals("Q")) {
                     System.out.println("Vous avez quitté le programme");
                     break;
+
                 } else {
                     System.out.print("! Saisie invalide\n");
                 }
